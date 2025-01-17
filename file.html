@@ -1,17 +1,16 @@
-<button onclick="copyText()">Copy to Clipboard</button>
+<button onclick="pasteText()">Paste from Clipboard</button>
 
-<div id="copiedContent"></div>
+<div id="pastedContent"></div>
 
 <script>
-function copyText() {
-  const text = "Test clipboard copy";
-  navigator.clipboard.writeText(text).then(function() {
-    console.log("Text copied to clipboard");
+function pasteText() {
+  navigator.clipboard.readText().then(function(text) {
+    console.log("Text read from clipboard: " + text);
 
-    // Display the copied text in the div
-    document.getElementById("copiedContent").innerText = "Copied text: " + text;
+    // Display the pasted text in the div
+    document.getElementById("pastedContent").innerText = "Pasted text: " + text;
   }).catch(function(err) {
-    console.error("Clipboard copying failed: ", err);
+    console.error("Clipboard reading failed: ", err);
   });
 }
 </script>
