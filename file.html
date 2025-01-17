@@ -1,10 +1,15 @@
 <button onclick="copyText()">Copy to Clipboard</button>
 
+<div id="copiedContent"></div>
+
 <script>
 function copyText() {
   const text = "Test clipboard copy";
   navigator.clipboard.writeText(text).then(function() {
     console.log("Text copied to clipboard");
+
+    // Display the copied text in the div
+    document.getElementById("copiedContent").innerText = "Copied text: " + text;
   }).catch(function(err) {
     console.error("Clipboard copying failed: ", err);
   });
