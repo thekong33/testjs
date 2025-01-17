@@ -1,0 +1,12 @@
+<button onclick="copyText()">Copy to Clipboard</button>
+
+<script>
+function copyText() {
+  const text = "Test clipboard copy";
+  navigator.clipboard.writeText(text).then(function() {
+    console.log("Text copied to clipboard");
+  }).catch(function(err) {
+    console.error("Clipboard copying failed: ", err);
+  });
+}
+</script>
